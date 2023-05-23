@@ -61,7 +61,7 @@ struct ContentView: View {
                         Stepper("pick a table \(table)", value: $table, in: 2...12, step: 1)
 
                         Section {
-                            Picker("Tip Value", selection: $questionNumber) {
+                            Picker("Tip Value", selection: $numberOfQuestion) {
                                    ForEach(numberOfQuestionsArray, id: \.self) {
                                        Text($0, format: .number)
                                    }
@@ -83,17 +83,30 @@ struct ContentView: View {
         }
     }
     
-    func askQuestion() {
-        
+    func newGame() {
+        score = 0
+        scoreTitle = ""
+        showingScore = false
+        gameIsOn = false
+        numberOfQuestion = 5
+        questionNumber = 0
     }
-   
+    
     func choiceWasTapped(choice: Int, answer: Int) {
-        if (choice == answer) {
-            scoreTitle = "Correct"
+        if (questionNumber < numberOfQuestion) {
+            if (choice == answer) {
+                scoreTitle = "Correct"
+                score += 1
+            } else {
+                scoreTitle = "Incorrect"
+            }
+            showingScore = true
         } else {
-            scoreTitle = "Incorrect"
+            withAnimation {
+                newGame()
+            }
         }
-        showingScore = true
+        questionNumber += 1
     }
     
     func possibleAnswer(answer: Int) -> [Int] {
@@ -106,9 +119,7 @@ struct ContentView: View {
                 possibleAnswers.append(choice)
             }
         }
-        
         possibleAnswers.shuffle()
-        
         return possibleAnswers
     }
 }
