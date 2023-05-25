@@ -18,7 +18,6 @@ struct ContentView: View {
     @State private var numberOfQuestion = 5
     @State private var gameIsOn = false
     @State private var questionNumber = 1
-    @State private var questions = [Question(text: "1*1", answer: 1)]
     @State private var scoreTitle = ""
     @State private var showingScore = false
     @State private var score = 0
@@ -31,15 +30,19 @@ struct ContentView: View {
                 
                 if (gameIsOn) {
                     VStack {
+                        var questions = generateQuestions(table: table, numberOfQuestion: numberOfQuestion)
+                        let question = questions.popLast()
+                        
+                        let possibleAnswers = possibleAnswer(answer: question!.answer)
+                        
                         Text("Question \(questionNumber)")
-                        Text("What is \(questions[0].text)")    
-                        let possibleAnswers = possibleAnswer(answer: questions[0].answer)
+                        Text("What is \(question!.text)")
+                        
                         ForEach(0..<4) { number in
-                            
                             Button {
-                                choiceWasTapped(choice: possibleAnswers[number], answer: questions[0].answer)
+                                choiceWasTapped(choice: possibleAnswers[number], answer: question!.answer)
                             } label: {
-                                Text("\(possibleAnswers[number])") // should display possible answer
+                                Text("\(possibleAnswers[number])")
                                     .foregroundColor(.white)
                                     .padding(20)
                                     .frame(width: 150)
@@ -47,9 +50,6 @@ struct ContentView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                             } .alert(scoreTitle, isPresented: $showingScore) {
                                 Button("Continue") {
-                                    withAnimation {
-                                        askQuestion()
-                                    } // is there a way to execute this on one line?
                                 }
                             } message: {
                                 Text("Your score is \(score)")
@@ -59,12 +59,12 @@ struct ContentView: View {
                 } else {
                     VStack {
                         Stepper("pick a table \(table)", value: $table, in: 2...12, step: 1)
-
+                        
                         Section {
                             Picker("Tip Value", selection: $numberOfQuestion) {
-                                   ForEach(numberOfQuestionsArray, id: \.self) {
-                                       Text($0, format: .number)
-                                   }
+                                ForEach(numberOfQuestionsArray, id: \.self) {
+                                    Text($0, format: .number)
+                                }
                             }.pickerStyle(.segmented)
                         } header: {
                             Text("Pick number of questions")
@@ -81,6 +81,21 @@ struct ContentView: View {
                 }
             }
         }
+    }
+ 
+    func generateQuestions(table: Int, numberOfQuestion: Int) -> [Question] {
+        var questions: [Question] = []
+        
+        for _ in 1...numberOfQuestion {
+            let randomNumber = Int.random(in: 1...10)
+            let questionText = "\(table) * \(randomNumber)"
+            let answer = table * randomNumber
+            
+            let question = Question(text: questionText, answer: answer)
+            questions.append(question)
+        }
+            
+        return questions
     }
     
     func newGame() {
