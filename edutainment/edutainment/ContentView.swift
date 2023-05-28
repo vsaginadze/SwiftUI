@@ -21,63 +21,93 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var showingScore = false
     @State private var score = 0
+    @State var isScaled: Bool = false
     
     var body: some View {
         Group {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.blue, .white]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all)
+                RadialGradient(stops: [
+                    .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.1),
+                    .init(color: Color(red: 0.65, green: 0.1, blue: 0.3), location: 0.36)
+                ], center: .top, startRadius: 200, endRadius: 700)
+                .ignoresSafeArea()
                 
                 if (gameIsOn) {
                     VStack {
-                        var questions = generateQuestions(table: table, numberOfQuestion: numberOfQuestion)
-                        let question = questions.popLast()
-                        
-                        let possibleAnswers = possibleAnswer(answer: question!.answer)
-                        
-                        Text("Question \(questionNumber)")
-                        Text("What is \(question!.text)")
-                        
-                        ForEach(0..<4) { number in
-                            Button {
-                                choiceWasTapped(choice: possibleAnswers[number], answer: question!.answer)
-                            } label: {
-                                Text("\(possibleAnswers[number])")
-                                    .foregroundColor(.white)
-                                    .padding(20)
-                                    .frame(width: 150)
-                                    .background(.black)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                            } .alert(scoreTitle, isPresented: $showingScore) {
-                                Button("Continue") {
-                                }
-                            } message: {
-                                Text("Your score is \(score)")
+                        VStack (spacing: 80) {
+                            var questions = generateQuestions(table: table, numberOfQuestion: numberOfQuestion)
+                            let question = questions.popLast()
+                            
+                            let possibleAnswers = possibleAnswer(answer: question!.answer)
+                            
+                            VStack {
+                                Text("Question \(questionNumber)")
+                                Text("What is \(question!.text)")
                             }
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .padding(20)
+                            .background(.thinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .scaleEffect()
+                            
+                            VStack {
+                                ForEach(0..<4) { number in
+                                    Button {
+                                        choiceWasTapped(choice: possibleAnswers[number], answer: question!.answer)
+                                        withAnimation {
+                                            isScaled.toggle()
+                                        }
+                                    } label: {
+                                        Text("\(possibleAnswers[number])")
+                                            .foregroundColor(.white)
+                                            .padding(20)
+                                            .frame(width: 150)
+                                            .background(.brown)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    }
+                                }
+                            }
+                            
+                            Text("Score \(score)")
+                                .foregroundColor(.white)
+                                .font(.title.bold())
                         }
                     }
                 } else {
                     VStack {
-                        Stepper("pick a table \(table)", value: $table, in: 2...12, step: 1)
-                        
-                        Section {
-                            Picker("Tip Value", selection: $numberOfQuestion) {
-                                ForEach(numberOfQuestionsArray, id: \.self) {
-                                    Text($0, format: .number)
-                                }
-                            }.pickerStyle(.segmented)
-                        } header: {
-                            Text("Pick number of questions")
-                        }
-                        
-                        Button {
-                            withAnimation {
-                                gameIsOn = true
+                        VStack (spacing: 20) {
+                            Stepper("pick a table \(table)", value: $table, in: 2...12, step: 1)
+                                .foregroundColor(.white)
+                            
+                            Section {
+                                Picker("Tip Value", selection: $numberOfQuestion) {
+                                    ForEach(numberOfQuestionsArray, id: \.self) {
+                                        Text($0, format: .number)
+                                    }
+                                }.pickerStyle(.segmented)
+                            } header: {
+                                Text("Pick number of questions")
+                                    .foregroundColor(.white)
                             }
-                        } label: {
-                            Text("Start Game")
+                            
+                            Button {
+                                withAnimation {
+                                    gameIsOn = true
+                                }
+                            } label: {
+                                Text("Start Game")
+                                    .foregroundColor(.white)
+                                    .padding(15)
+                                    .background(.black)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                            }
                         }
-                    }
+                        .padding(20)
+                        .frame(maxWidth: .infinity, maxHeight: 300)
+                        .background(.thinMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                    }.padding()
                 }
             }
         }
