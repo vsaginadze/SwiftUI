@@ -386,8 +386,6 @@ When we’re coming back the other way – when we have JSON data and we want to
 
 That brings us to the end of our project overview, so go ahead and reset your project to its initial state ready to build on.
 
-# Building a list we can delete from
-
 
 
 
