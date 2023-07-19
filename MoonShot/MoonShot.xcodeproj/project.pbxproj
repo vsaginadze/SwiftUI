@@ -7,32 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F9A3F842A30F54E0062A4E4 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3F832A30F54E0062A4E4 /* ToDoListApp.swift */; };
-		4F9A3F882A30F5500062A4E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9A3F872A30F5500062A4E4 /* Assets.xcassets */; };
-		4F9A3F8B2A30F5500062A4E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9A3F8A2A30F5500062A4E4 /* Preview Assets.xcassets */; };
-		4F9A3F932A30F5B50062A4E4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3F922A30F5B50062A4E4 /* ListView.swift */; };
-		4F9A3F952A30F7570062A4E4 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3F942A30F7570062A4E4 /* ListRowView.swift */; };
-		4F9A3F972A30F8100062A4E4 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3F962A30F8100062A4E4 /* AddView.swift */; };
-		4F9A3F9A2A30FB350062A4E4 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3F992A30FB350062A4E4 /* ItemModel.swift */; };
-		4F9A3F9D2A30FD230062A4E4 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3F9C2A30FD230062A4E4 /* ListViewModel.swift */; };
-		4F9A3FC02A32810D0062A4E4 /* NoItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A3FBF2A32810D0062A4E4 /* NoItemsView.swift */; };
+		4F25C54C2A67D20500CCA021 /* MoonShotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F25C54B2A67D20500CCA021 /* MoonShotApp.swift */; };
+		4F25C54E2A67D20500CCA021 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F25C54D2A67D20500CCA021 /* ContentView.swift */; };
+		4F25C5502A67D20700CCA021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F25C54F2A67D20700CCA021 /* Assets.xcassets */; };
+		4F25C5532A67D20700CCA021 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F25C5522A67D20700CCA021 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F9A3F802A30F54E0062A4E4 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F9A3F832A30F54E0062A4E4 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
-		4F9A3F872A30F5500062A4E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4F9A3F8A2A30F5500062A4E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4F9A3F922A30F5B50062A4E4 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		4F9A3F942A30F7570062A4E4 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
-		4F9A3F962A30F8100062A4E4 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		4F9A3F992A30FB350062A4E4 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		4F9A3F9C2A30FD230062A4E4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		4F9A3FBF2A32810D0062A4E4 /* NoItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemsView.swift; sourceTree = "<group>"; };
+		4F25C5482A67D20500CCA021 /* MoonShot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoonShot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F25C54B2A67D20500CCA021 /* MoonShotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonShotApp.swift; sourceTree = "<group>"; };
+		4F25C54D2A67D20500CCA021 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4F25C54F2A67D20700CCA021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F25C5522A67D20700CCA021 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4F9A3F7D2A30F54E0062A4E4 /* Frameworks */ = {
+		4F25C5452A67D20500CCA021 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,106 +32,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F9A3F772A30F54E0062A4E4 = {
+		4F25C53F2A67D20500CCA021 = {
 			isa = PBXGroup;
 			children = (
-				4F9A3F822A30F54E0062A4E4 /* ToDoList */,
-				4F9A3F812A30F54E0062A4E4 /* Products */,
+				4F25C54A2A67D20500CCA021 /* MoonShot */,
+				4F25C5492A67D20500CCA021 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4F9A3F812A30F54E0062A4E4 /* Products */ = {
+		4F25C5492A67D20500CCA021 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F9A3F802A30F54E0062A4E4 /* ToDoList.app */,
+				4F25C5482A67D20500CCA021 /* MoonShot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F9A3F822A30F54E0062A4E4 /* ToDoList */ = {
+		4F25C54A2A67D20500CCA021 /* MoonShot */ = {
 			isa = PBXGroup;
 			children = (
-				4F9A3F9B2A30FD060062A4E4 /* ViewModels */,
-				4F9A3F982A30FB290062A4E4 /* Models */,
-				4F9A3F912A30F5AA0062A4E4 /* Views */,
-				4F9A3F832A30F54E0062A4E4 /* ToDoListApp.swift */,
-				4F9A3F872A30F5500062A4E4 /* Assets.xcassets */,
-				4F9A3F892A30F5500062A4E4 /* Preview Content */,
+				4F25C54B2A67D20500CCA021 /* MoonShotApp.swift */,
+				4F25C54D2A67D20500CCA021 /* ContentView.swift */,
+				4F25C54F2A67D20700CCA021 /* Assets.xcassets */,
+				4F25C5512A67D20700CCA021 /* Preview Content */,
 			);
-			path = ToDoList;
+			path = MoonShot;
 			sourceTree = "<group>";
 		};
-		4F9A3F892A30F5500062A4E4 /* Preview Content */ = {
+		4F25C5512A67D20700CCA021 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4F9A3F8A2A30F5500062A4E4 /* Preview Assets.xcassets */,
+				4F25C5522A67D20700CCA021 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4F9A3F912A30F5AA0062A4E4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4F9A3F922A30F5B50062A4E4 /* ListView.swift */,
-				4F9A3F942A30F7570062A4E4 /* ListRowView.swift */,
-				4F9A3F962A30F8100062A4E4 /* AddView.swift */,
-				4F9A3FBF2A32810D0062A4E4 /* NoItemsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		4F9A3F982A30FB290062A4E4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4F9A3F992A30FB350062A4E4 /* ItemModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		4F9A3F9B2A30FD060062A4E4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				4F9A3F9C2A30FD230062A4E4 /* ListViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4F9A3F7F2A30F54E0062A4E4 /* ToDoList */ = {
+		4F25C5472A67D20500CCA021 /* MoonShot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F9A3F8E2A30F5500062A4E4 /* Build configuration list for PBXNativeTarget "ToDoList" */;
+			buildConfigurationList = 4F25C5562A67D20700CCA021 /* Build configuration list for PBXNativeTarget "MoonShot" */;
 			buildPhases = (
-				4F9A3F7C2A30F54E0062A4E4 /* Sources */,
-				4F9A3F7D2A30F54E0062A4E4 /* Frameworks */,
-				4F9A3F7E2A30F54E0062A4E4 /* Resources */,
+				4F25C5442A67D20500CCA021 /* Sources */,
+				4F25C5452A67D20500CCA021 /* Frameworks */,
+				4F25C5462A67D20500CCA021 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ToDoList;
-			productName = ToDoList;
-			productReference = 4F9A3F802A30F54E0062A4E4 /* ToDoList.app */;
+			name = MoonShot;
+			productName = MoonShot;
+			productReference = 4F25C5482A67D20500CCA021 /* MoonShot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4F9A3F782A30F54E0062A4E4 /* Project object */ = {
+		4F25C5402A67D20500CCA021 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					4F9A3F7F2A30F54E0062A4E4 = {
+					4F25C5472A67D20500CCA021 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = 4F9A3F7B2A30F54E0062A4E4 /* Build configuration list for PBXProject "ToDoList" */;
+			buildConfigurationList = 4F25C5432A67D20500CCA021 /* Build configuration list for PBXProject "MoonShot" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -149,47 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 4F9A3F772A30F54E0062A4E4;
-			productRefGroup = 4F9A3F812A30F54E0062A4E4 /* Products */;
+			mainGroup = 4F25C53F2A67D20500CCA021;
+			productRefGroup = 4F25C5492A67D20500CCA021 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F9A3F7F2A30F54E0062A4E4 /* ToDoList */,
+				4F25C5472A67D20500CCA021 /* MoonShot */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4F9A3F7E2A30F54E0062A4E4 /* Resources */ = {
+		4F25C5462A67D20500CCA021 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F9A3F8B2A30F5500062A4E4 /* Preview Assets.xcassets in Resources */,
-				4F9A3F882A30F5500062A4E4 /* Assets.xcassets in Resources */,
+				4F25C5532A67D20700CCA021 /* Preview Assets.xcassets in Resources */,
+				4F25C5502A67D20700CCA021 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4F9A3F7C2A30F54E0062A4E4 /* Sources */ = {
+		4F25C5442A67D20500CCA021 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F9A3F9A2A30FB350062A4E4 /* ItemModel.swift in Sources */,
-				4F9A3F972A30F8100062A4E4 /* AddView.swift in Sources */,
-				4F9A3F9D2A30FD230062A4E4 /* ListViewModel.swift in Sources */,
-				4F9A3F842A30F54E0062A4E4 /* ToDoListApp.swift in Sources */,
-				4F9A3F932A30F5B50062A4E4 /* ListView.swift in Sources */,
-				4F9A3FC02A32810D0062A4E4 /* NoItemsView.swift in Sources */,
-				4F9A3F952A30F7570062A4E4 /* ListRowView.swift in Sources */,
+				4F25C54E2A67D20500CCA021 /* ContentView.swift in Sources */,
+				4F25C54C2A67D20500CCA021 /* MoonShotApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4F9A3F8C2A30F5500062A4E4 /* Debug */ = {
+		4F25C5542A67D20700CCA021 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		4F9A3F8D2A30F5500062A4E4 /* Release */ = {
+		4F25C5552A67D20700CCA021 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -303,14 +259,14 @@
 			};
 			name = Release;
 		};
-		4F9A3F8F2A30F5500062A4E4 /* Debug */ = {
+		4F25C5572A67D20700CCA021 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MoonShot/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -323,7 +279,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.vsaginadze.ToDoList;
+				PRODUCT_BUNDLE_IDENTIFIER = me.vsaginadze.MoonShot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -331,14 +287,14 @@
 			};
 			name = Debug;
 		};
-		4F9A3F902A30F5500062A4E4 /* Release */ = {
+		4F25C5582A67D20700CCA021 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MoonShot/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -351,7 +307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.vsaginadze.ToDoList;
+				PRODUCT_BUNDLE_IDENTIFIER = me.vsaginadze.MoonShot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -362,25 +318,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4F9A3F7B2A30F54E0062A4E4 /* Build configuration list for PBXProject "ToDoList" */ = {
+		4F25C5432A67D20500CCA021 /* Build configuration list for PBXProject "MoonShot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4F9A3F8C2A30F5500062A4E4 /* Debug */,
-				4F9A3F8D2A30F5500062A4E4 /* Release */,
+				4F25C5542A67D20700CCA021 /* Debug */,
+				4F25C5552A67D20700CCA021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F9A3F8E2A30F5500062A4E4 /* Build configuration list for PBXNativeTarget "ToDoList" */ = {
+		4F25C5562A67D20700CCA021 /* Build configuration list for PBXNativeTarget "MoonShot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4F9A3F8F2A30F5500062A4E4 /* Debug */,
-				4F9A3F902A30F5500062A4E4 /* Release */,
+				4F25C5572A67D20700CCA021 /* Debug */,
+				4F25C5582A67D20700CCA021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4F9A3F782A30F54E0062A4E4 /* Project object */;
+	rootObject = 4F25C5402A67D20500CCA021 /* Project object */;
 }

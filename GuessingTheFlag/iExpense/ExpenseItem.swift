@@ -11,5 +11,6 @@ struct ExpenseItem: Identifiable {
     var id = UUID()
     let name: String
     let type: String
-    let amonut: Double
+    let currency: String
+    let amount: Double
 }

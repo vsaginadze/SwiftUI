@@ -18,23 +18,22 @@ struct ContentView: View {
                     Text(item.name)
                 }
                 .onDelete(perform: removeItems)
+                .onMove(perform: moveItems)
             }
             .navigationTitle("iExpense")
-            .toolbar {
-                Button {
-                    showAddView = true
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
-            .sheet(isPresented: $showAddView) {
-                AddView(expenses: expenses)
-            }
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: NavigationLink("Add", destination: AddView(expenses: expenses))
+            )
         }
     }
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
+    }
+    
+    func moveItems(from: IndexSet, to: Int) {
+        expenses.items.move(fromOffsets: from, toOffset: to)
     }
 }
 
