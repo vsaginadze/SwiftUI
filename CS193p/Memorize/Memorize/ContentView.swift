@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var themes: [String : Array<String>] = [
+    let themes: [String : Array<String>] = [
         "halloween": ["👻","🎃","🕷️","😈","💀","🕸️","🧙‍♀️","🙀","👹","😱","☠️","🍭"],
         "vehicles": ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚚", "🛵"],
         "animals": ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐸"]
@@ -47,7 +47,7 @@ struct ContentView: View {
     
     var cards: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
-            ForEach(0..<shuffledTheme.count, id:\.self) { index in
+            ForEach(shuffledTheme.indices, id:\.self) { index in
                 CardView(content: shuffledTheme[index])
                     .aspectRatio(2/3, contentMode: .fit)
             }
