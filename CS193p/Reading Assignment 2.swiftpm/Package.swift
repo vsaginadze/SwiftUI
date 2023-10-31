@@ -8,19 +8,19 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "test",
+    name: "Reading Assignment 2",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "test",
+            name: "Reading Assignment 2",
             targets: ["AppModule"],
-            bundleIdentifier: "me.vsaginadze.test",
+            bundleIdentifier: "me.vsaginadze.Reading-Assignment-2",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .tv),
-            accentColor: .presetColor(.brown),
+            appIcon: .placeholder(icon: .openBook),
+            accentColor: .presetColor(.green),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
