@@ -77,82 +77,61 @@
 // // The closure is called outside the function scope, making it 'escape'
 // obj.runCompletionHandler()
 
-enum ASCIIControlCharacter: Character { 
-    case tab = "\t"
-    case lineFeed = "\n"
-    case carriageReturn = "\r"
+// enum ASCIIControlCharacter: Character {  
+//      case tab = "\t"
+//      case lineFeed = "\n"
+//      case carriageReturn = "\r"
+//  }
+ 
+//  enum Planet: Int {
+//      case mercury = 1, venus, earth, mars, jupyter, saturn, uranus, neptun
+//  }
+ 
+//  enum Compass: String {
+//      case north, south, west, east
+//  }
+ 
+//  let positionToFind = 4
+ 
+//  if let possiblePlanet = Planet(rawValue: positionToFind) {
+//      switch possiblePlanet {
+//          case .earth:
+//              print("Mostly Harmless")
+//          default:
+//              print(" \(possiblePlanet) Isn't suitable for humans YET")
+//      }
+//  } else {
+//      print("There isn't a planet at position \(positionToFind)")
+//  }
+
+struct Point {
+    var x = 0.0, y = 0.0
 }
 
-enum Planet: Int {
-    case mercury = 1, venus, earth, mars, jupyter, saturn, uranus, neptun
+struct Size {
+    var width = 0.0, height = 0.0
 }
 
-enum Compass: String {
-    case north, south, west, east
-}
-
-let positionToFind = 4
-
-if let possiblePlanet = Planet(rawValue: positionToFind) {
-    switch possiblePlanet {
-        case .earth:
-            print("Mostly Harmless")
-        default:
-            print(" \(possiblePlanet) Isn't suitable for humans YET")
+struct Rectangle {
+    var origin = Point()
+    var size = Size()
+    
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            
+            return Point(x: centerX, y: centerY)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - (size.width / 2)
+            origin.y = newCenter.y - (size.height / 2)
+        }
     }
-} else {
-    print("There isn't a planet at position \(positionToFind)")
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var square = Rectangle(origin: Point(x: 0, y: 0), size: Size(width: 10.0, height: 10.0))
+var initialSquareCenter = square.center
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+ 
