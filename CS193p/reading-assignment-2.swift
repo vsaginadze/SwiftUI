@@ -227,3 +227,24 @@ let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
 cheeseQuestion.ask()
 
 cheeseQuestion.response = "Yes, I do like cheese."
+
+class ShoppingListItem {
+    var name: String?
+    var quantity = 1
+    var purchased = false
+}
+var item = ShoppingListItem()
+
+struct Size {
+    var width = 0.0, height = 0.0
+}
+let twoByTwo = Size(width: 2.0, height: 2.0)
+
+let zeroByTwo = Size(height: 2.0)
+print(zeroByTwo.width, zeroByTwo.height)
+// Prints "0.0 2.0"
+
+
+let zeroByZero = Size()
+print(zeroByZero.width, zeroByZero.height)
+// Prints "0.0 0.0"
