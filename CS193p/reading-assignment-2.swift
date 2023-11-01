@@ -185,6 +185,10 @@ struct Celsius {
     init(fromKelvin kelvin: Double) {
         temperatureInCelsius = kelvin - 273.15
     }
+
+    init(_ celsius: Double) {
+        temperatureInCelsius = celsius
+    }
 }
 
 let boilingPointOfWater = Celsius(fromFahrenheit: 212.0)
