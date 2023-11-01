@@ -248,3 +248,22 @@ print(zeroByTwo.width, zeroByTwo.height)
 let zeroByZero = Size()
 print(zeroByZero.width, zeroByZero.height)
 // Prints "0.0 0.0"
+
+struct Person {
+    var residence: Residence?
+}
+
+struct Residence {
+    var numberOfRooms = 1
+}
+
+var john = Person()
+// print(john.residence!.numberOfRooms)
+
+john.residence = Residence()
+
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}
