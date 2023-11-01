@@ -141,3 +141,29 @@ struct Cuboid {
 }
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+
+enum TriStateSwitch {
+    case off, low, high
+    mutating func next() {
+        switch self {
+            case .off:
+                self = .low
+            case .low:
+                self = .high
+            case .high:
+                self = .off
+        }
+    }
+}
+
+var ovenLight = TriStateSwitch.off
+
+print(ovenLight)
+ovenLight.next()
+
+print(ovenLight)
+ovenLight.next()
+print(ovenLight)
+ovenLight.next()
+print(ovenLight)
+ovenLight.next()
