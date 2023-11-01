@@ -29,12 +29,17 @@ struct EmojiMemoryGameView: View {
                 cards
                     .animation(.default, value: viewModel.cards)
             }
-            
-            Button("Shuffle") {
-                viewModel.shuffle()
+            HStack {
+                Button("Shuffle") {
+                    viewModel.shuffle()
+                }
+                
+                Spacer()
+                
+                Button("New Game") {
+                    viewModel.restoreCards()
+                }
             }
-            
-//            Spacer()
 //
 //            themesButtons
         }
@@ -84,33 +89,6 @@ struct EmojiMemoryGameView: View {
             shuffledTheme = currentThemeArray.shuffled()
         }
     }
-    
-//    var cardCountAdjusters: some View {
-//        HStack {
-//            cardRemover
-//            Spacer()
-//            cardAdder
-//        }
-//        .imageScale(.large)
-//        .font(.largeTitle)
-//    }
-    
-//    func cardCountAdjuster(by offset: Int, symbol: String) -> some View {
-//        Button(action: {
-//            cardCount += offset
-//        }, label: {
-//            Image(systemName: "rectangle.stack.fill.badge.\(symbol)")
-//        })
-//        .disabled(cardCount + offset < 1 || cardCount + offset > hallowen.count)
-//    }
-//
-//    var cardRemover: some View {
-//        cardCountAdjuster(by: -1, symbol: "minus")
-//    }
-//
-//    var cardAdder: some View {
-//        cardCountAdjuster(by: 1, symbol: "plus")
-//    }
 }
 
 struct CardView: View {

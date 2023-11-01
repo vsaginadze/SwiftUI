@@ -10,6 +10,7 @@ import Foundation
 struct MemoryGame<CardContent> where CardContent : Equatable {
     private(set) var cards: Array<Card>
     
+    
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = Array<Card>()
         // add numberOfPairsOfCards * 2 cards in array
