@@ -7,22 +7,33 @@
 
 import SwiftUI
 
-class EmojiMemoryGame: ObservableObject {
-    private static let emojis = ["👻","🎃","🕷️","😈","💀","🕸️","🧙‍♀️","🙀","👹","😱","☠️","🍭"]
-    private static let emoji2 = ["❄️","⛄","🎿","🧣","☕","🌨️","🎄","🔥","🧤"]
-    private static let emoji3 = ["🌌","🚀","🪐","👽","🛸","🌠","🔭","🪐","🛰️"]
-    private static let emoji4 = ["🐠","🐙","🦑","🦀","🐬","🌊","🐋","🐚","🦐"]
-    private static let emoji5 = ["🦁","🐘","🦒","🦓","🦏","🌿","🦜","🌾","🌍"]
-    private static let emoji6 = ["🌴","🍹","🏖️","🌺","🐠","🌞","🕶️","🍍","🍉"]
-    private static let emoji7 = ["⚔️","🛡️","🏰","🗡️","👑","🛡️","🐉","🏹","🪙"]
 
+class EmojiMemoryGame: ObservableObject {
+    
+    private static let emojisList: [[String]] = [
+        ["👻","🎃","🕷️","😈","💀","🕸️","🧙‍♀️","🙀","👹","😱","☠️","🍭"],
+        ["❄️","⛄","🎿","🧣","☕","🌨️","🎄","🔥","🧤"],
+        ["🌌","🚀","🪐","👽","🛸","🌠","🔭","🪐","🛰️"],
+        ["🐠","🐙","🦑","🦀","🐬","🌊","🐋","🐚","🦐"],
+        ["🦁","🐘","🦒","🦓","🦏","🌿","🦜","🌾","🌍"],
+        ["🌴","🍹","🏖️","🌺","🐠","🌞","🕶️","🍍","🍉"],
+        ["⚔️","🛡️","🏰","🗡️","👑","🛡️","🐉","🏹","🪙"],
+    ]
+    private static var numberOfPairsList = [16, 10, 17, 10, 12, 13, 14]
+    private static let colors: [Color] = [.orange, .cyan, .purple, .blue, .safari, .green, .black]
+    private static let names = ["halloween", "winter", "space", "ocean", "safari", "tropical", "medieval"]
+    // TODO: - Put Data in JSON
     
     
+    // TODO: Create with name
+    // Try to create a memory game with theme's name instead of it's id
+    private static var theme: Theme = Theme(for: Int.random(in: 0..<names.count))
     
-    private static func createMemoryGame() -> MemoryGame<String> {
-        return MemoryGame(numberOfPairsOfCards: 16) { pairIndex in
-            if emojis.indices.contains(pairIndex) {
-                return emojis[pairIndex]
+    // creates memory game using an id of a theme
+    private static func createMemoryGame(forTheme idx: Int = theme.id) -> MemoryGame<String> {
+        return MemoryGame(numberOfPairsOfCards: numberOfPairsList[idx]) { pairIndex in
+            if emojisList[idx].indices.contains(pairIndex) {
+                return emojisList[idx][pairIndex]
             } else {
                 return "🫠"
             }
@@ -37,6 +48,11 @@ class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Intents
     
+    func updateTheme(_ idx: Int) {
+        model = EmojiMemoryGame.createMemoryGame(forTheme: idx)
+        EmojiMemoryGame.theme = Theme(for: idx)
+    }
+    
     func shuffle() {
         model.shuffle()
     }
@@ -48,6 +64,35 @@ class EmojiMemoryGame: ObservableObject {
     func choose(_ card: MemoryGame<String>.Card) {
         model.choose(card)
     }
+    
+    func getColor() -> Color {
+        return EmojiMemoryGame.theme.color
+    }
+    
+    func getNames() -> [String] {
+        // TODO: return the keys of dictionary (dictioanry is themes and keys will be names) instead of an array
+        return ["halloween", "winter", "space", "ocean", "safari", "tropical", "medieval"]
+    }
+    
+    struct Theme {
+        var id: Int
+        let name: String
+        let emojis: [String]
+        let numberOfPairs: Int
+        let color: Color
+        
+        init(for id: Int) {
+            self.id = id
+            self.name = names[id]
+            self.emojis = emojisList[id]
+            self.numberOfPairs = numberOfPairsList[id]
+            self.color = colors[id]
+        }
+    }
+}
+
+extension Color {
+    static let safari = Color(red: 241 / 255, green: 99 / 255, blue: 38 / 255)
 }
 
 

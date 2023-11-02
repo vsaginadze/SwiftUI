@@ -7,55 +7,52 @@
 
 import SwiftUI
 
+
 struct EmojiMemoryGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
+    let names = ["halloween", "winter", "space", "ocean", "safari", "tropical", "medieval"]
     
-    let themes: [String : Array<String>] = [
-        "halloween": ["👻","🎃","🕷️","😈","💀","🕸️","🧙‍♀️","🙀","👹","😱","☠️","🍭"],
-        "vehicles": ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚚", "🛵"],
-        "animals": ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐸"]
-    ]
+    @State private var currentTheme = "halloween"
+
     
-    @State var currentTheme = ""
-    @State var shuffledTheme: [String] = ["👻","🎃","🕷️","😈","💀","🕸️","🧙‍♀️","🙀","👹","😱","☠️","🍭"]
-    
-   
     var body: some View {
         VStack {
-//            Text("Memorize!")
-//                .font(.largeTitle)
+            Text("Memorize!")
+                .font(.largeTitle)
             
             ScrollView {
                 cards
                     .animation(.default, value: viewModel.cards)
             }
             HStack {
-                Button("Shuffle") {
-                    viewModel.shuffle()
+                Button(action: viewModel.shuffle) {
+                    Text("Shuffle")
+                        .modifier(ButtonModifier(color: viewModel.getColor()))
                 }
                 
                 Spacer()
                 
-                Button("New Game") {
-                    viewModel.restoreCards()
+                Button(action: viewModel.restoreCards) {
+                    Text("New Game")
+                        .modifier(ButtonModifier(color: viewModel.getColor()))
                 }
+                
             }
-//
-//            themesButtons
         }
         .padding()
     }
     
-    var themesButtons: some View {
-        HStack {
-            showTheme(theme: "Vehicles", displayAs: "car")
-            showTheme(theme: "Animals", displayAs: "hare")
-            showTheme(theme: "Halloween", displayAs: "moon")
+    var themesList: some View {
+        Picker("Select a paint color", selection: $currentTheme) {
+            ForEach(names, id: \.self) {
+                Text($0)
+            }
         }
-        .imageScale(.large)
-        .foregroundColor(.accentColor)
+        .pickerStyle(.menu)
+        .onChange(of: currentTheme) { newValue in
+            viewModel.updateTheme(names.firstIndex(of: newValue) ?? 0)
+        }
     }
-    
     
     var cards: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 85), spacing: 0)], spacing: 0) {
@@ -68,28 +65,23 @@ struct EmojiMemoryGameView: View {
                     }
             }
         }
-        .foregroundColor(.orange)
+        .foregroundColor(viewModel.getColor())
     }
     
-    func showTheme(theme name: String, displayAs emoji: String) -> some View {
-        Button {
-            currentTheme = name.lowercased()
-            shuffleCurrentTheme()
-        } label: {
-            VStack {
-                Image(systemName: emoji)
-                    .font(.title)
-                Text(name)
-            }
-        }
-    }
-    
-    func shuffleCurrentTheme() {
-        if let currentThemeArray = themes[currentTheme] {
-            shuffledTheme = currentThemeArray.shuffled()
+    struct ButtonModifier: ViewModifier {
+        var color: Color
+        
+        func body(content: Content) -> some View {
+            content
+                .padding(15)
+                .foregroundColor(.white)
+                .background(color.opacity(0.7))
+                .cornerRadius(10)
         }
     }
 }
+
+
 
 struct CardView: View {
     let card: MemoryGame<String>.Card
