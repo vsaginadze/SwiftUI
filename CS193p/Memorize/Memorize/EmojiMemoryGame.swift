@@ -19,7 +19,7 @@ class EmojiMemoryGame: ObservableObject {
         ["🌴","🍹","🏖️","🌺","🐠","🌞","🕶️","🍍","🍉"],
         ["⚔️","🛡️","🏰","🗡️","👑","🛡️","🐉","🏹","🪙"],
     ]
-    private static var numberOfPairsList = [16, 10, 17, 10, 12, 13, 14]
+    private static var numberOfPairsList = (0..<names.count).map { _ in Int.random(in: 10...12)}
     private static let colors: [Color] = [.orange, .cyan, .purple, .blue, .safari, .green, .black]
     private static let names = ["halloween", "winter", "space", "ocean", "safari", "tropical", "medieval"]
     // TODO: - Put Data in JSON
@@ -27,15 +27,16 @@ class EmojiMemoryGame: ObservableObject {
     
     // TODO: Create with name
     // Try to create a memory game with theme's name instead of it's id
-    private static var theme: Theme = Theme(for: Int.random(in: 0..<names.count))
+//    private static var theme: Theme = Theme(for: Int.random(in: 0..<names.count))
     
     // creates memory game using an id of a theme
-    private static func createMemoryGame(forTheme idx: Int = theme.id) -> MemoryGame<String> {
+    private static func createMemoryGame(forTheme idx: Int = 0) -> MemoryGame<String> {
+        print(numberOfPairsList[idx])
         return MemoryGame(numberOfPairsOfCards: numberOfPairsList[idx]) { pairIndex in
             if emojisList[idx].indices.contains(pairIndex) {
                 return emojisList[idx][pairIndex]
             } else {
-                return "🫠"
+                return "🫠" // retrieve this emoji from themes
             }
         }
     }
@@ -50,7 +51,7 @@ class EmojiMemoryGame: ObservableObject {
     
     func updateTheme(_ idx: Int) {
         model = EmojiMemoryGame.createMemoryGame(forTheme: idx)
-        EmojiMemoryGame.theme = Theme(for: idx)
+//        EmojiMemoryGame.theme = Theme(for: idx)
     }
     
     func shuffle() {
@@ -66,7 +67,8 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func getColor() -> Color {
-        return EmojiMemoryGame.theme.color
+//        return EmojiMemoryGame.theme.color
+        return .orange
     }
     
     func getNames() -> [String] {

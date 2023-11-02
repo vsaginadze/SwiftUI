@@ -11,6 +11,7 @@ import SwiftUI
 struct EmojiMemoryGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     let names = ["halloween", "winter", "space", "ocean", "safari", "tropical", "medieval"]
+    let aspectRatio : CGFloat = 2/3
     
     @State private var currentTheme = "halloween"
 
@@ -20,11 +21,15 @@ struct EmojiMemoryGameView: View {
             Text("Memorize!")
                 .font(.largeTitle)
             
-            ScrollView {
-                cards
-                    .animation(.default, value: viewModel.cards)
+            GeometryReader { geomtry in
+                ScrollView {
+                    cards
+                        .animation(.default, value: viewModel.cards)
+                }
             }
+            
             HStack {
+                
                 Button(action: viewModel.shuffle) {
                     Text("Shuffle")
                         .modifier(ButtonModifier(color: viewModel.getColor()))
@@ -54,29 +59,31 @@ struct EmojiMemoryGameView: View {
         }
     }
     
+    // TODO: FIX ratios
     var cards: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 85), spacing: 0)], spacing: 0) {
-            ForEach(viewModel.cards) { card in
-                CardView(card)
-                    .aspectRatio(2/3, contentMode: .fit)
-                    .padding(4)
-                    .onTapGesture {
-                        viewModel.choose(card)
-                    }
+        AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
+            CardView(card)
+                .padding(4)
+                .onTapGesture {
+                    viewModel.choose(card)
+                }
             }
         }
         .foregroundColor(viewModel.getColor())
     }
+    
+    
     
     struct ButtonModifier: ViewModifier {
         var color: Color
         
         func body(content: Content) -> some View {
             content
-                .padding(15)
                 .foregroundColor(.white)
+                .padding(15)
                 .background(color.opacity(0.7))
                 .cornerRadius(10)
+                
         }
     }
 }
