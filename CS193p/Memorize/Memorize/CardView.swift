@@ -30,8 +30,9 @@ struct CardView: View {
                     .animation(.spin(duration: 1), value: card.isMatched)
             )
         .padding(5)
-        .modifier(Cardify(isFaceUp: card.isFaceUp))
+        .cardify(isFaceUp: card.isFaceUp)
         .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
+
     }
 }
 
