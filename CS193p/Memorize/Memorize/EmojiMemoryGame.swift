@@ -9,7 +9,8 @@ import SwiftUI
 
 
 class EmojiMemoryGame: ObservableObject {
-    
+    typealias Card = MemoryGame<String>.Card
+
     private static let emojisList: [[String]] = [
         ["👻","🎃","🕷️","😈","💀","🕸️","🧙‍♀️","🙀","👹","😱","☠️","🍭"],
         ["❄️","⛄","🎿","🧣","☕","🌨️","🎄","🔥","🧤"],
@@ -19,7 +20,7 @@ class EmojiMemoryGame: ObservableObject {
         ["🌴","🍹","🏖️","🌺","🐠","🌞","🕶️","🍍","🍉"],
         ["⚔️","🛡️","🏰","🗡️","👑","🛡️","🐉","🏹","🪙"],
     ]
-    private static var numberOfPairsList = (0..<names.count).map { _ in Int.random(in: 10...12)}
+    private static var numberOfPairsList = (0..<names.count).map { _ in Int.random(in: 6...8)}
     private static let colors: [Color] = [.orange, .cyan, .purple, .blue, .safari, .green, .black]
     private static let names = ["halloween", "winter", "space", "ocean", "safari", "tropical", "medieval"]
     // TODO: - Put Data in JSON
@@ -43,7 +44,7 @@ class EmojiMemoryGame: ObservableObject {
         
     @Published private var model = createMemoryGame()
     
-    var cards: Array<MemoryGame<String>.Card> {
+    var cards: Array<Card> {
         return model.cards
     }
     
@@ -62,7 +63,7 @@ class EmojiMemoryGame: ObservableObject {
         model = EmojiMemoryGame.createMemoryGame()
     }
     
-    func choose(_ card: MemoryGame<String>.Card) {
+    func choose(_ card: Card) {
         model.choose(card)
     }
     
