@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     let emojis: [String] = ["👻", "👹", "🕷️", "🎃", "🕸️", "🧙‍♀️", "🧟", "🧛‍♂️", "🍭"]
     @State var cardCount = 4
+    
     var body: some View {
         VStack {
             HStack {
@@ -21,31 +22,34 @@ struct ContentView: View {
             .foregroundColor(.orange)
 
             HStack {
-                
-                Button(action: {
-                    if cardCount > 1 {
-                        cardCount -= 1
-                    }
-                }, label: {
-                    Image(systemName: "rectangle.stack.fill.badge.minus")
-                })
-                
+                cardRemover
                 Spacer()
-                
-                Button(action: {
-                    if cardCount < emojis.count {
-                        cardCount += 1
-                    }
-                }, label: {
-                    Image(systemName: "rectangle.stack.fill.badge.plus")
-                })
-                
-                
+                cardAdder
             }
             .imageScale(.large)
             .font(.largeTitle)
         }
         .padding()
+    }
+    
+    var cardRemover: some View {
+        Button(action: {
+            if cardCount > 1 {
+                cardCount -= 1
+            }
+        }, label: {
+            Image(systemName: "rectangle.stack.fill.badge.minus")
+        })
+    }
+    
+    var cardAdder: some View {
+        Button(action: {
+            if cardCount < emojis.count {
+                cardCount += 1
+            }
+        }, label: {
+            Image(systemName: "rectangle.stack.fill.badge.plus")
+        })
     }
 }
 
