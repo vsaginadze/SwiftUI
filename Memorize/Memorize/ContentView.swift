@@ -14,13 +14,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             cards
+            Spacer()
             cardCountAdjusters
         }
         .padding()
     }
     
     var cards: some View {
-        HStack {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
             ForEach(0..<cardCount, id: \.self) { idx in
                 CardView(content: emojis[idx])
 
@@ -53,7 +54,7 @@ struct ContentView: View {
     }
     
     var cardAdder: some View {
-        cardCountAdjusters(by: 1, symbol: "rectangle.stack.fill.badge.plus")
+        cardCountAdjusters(by: +1, symbol: "rectangle.stack.fill.badge.plus")
     }
 }
 
@@ -64,13 +65,16 @@ struct CardView: View {
     var body: some View {
         ZStack {
             let base = RoundedRectangle(cornerRadius: 12)
-            if isFaceUp {
+            Group {
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 2)
                 Text(content).font(.largeTitle)
-            } else {
-                base.fill()
             }
+            .opacity(isFaceUp ? 1 : 0)
+            
+            
+            base.fill().opacity(isFaceUp ? 0 : 1)
+            
         } .onTapGesture {
             isFaceUp.toggle()
             print("tapped")
