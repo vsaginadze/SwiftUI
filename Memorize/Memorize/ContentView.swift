@@ -8,15 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    let emojis: [String] = ["👻", "👹", "🕷️", "🎃"]
+    let emojis: [String] = ["👻", "👹", "🕷️", "🎃", "🕸️", "🧙‍♀️", "🧟", "🧛‍♂️", "🍭"]
+    @State var cardCount = 4
     var body: some View {
-        HStack {
-            ForEach(emojis.indices, id: \.self) { idx in
-                CardView(content: emojis[idx])
+        VStack {
+            HStack {
+                ForEach(0..<cardCount, id: \.self) { idx in
+                    CardView(content: emojis[idx])
 
+                }
             }
+            .foregroundColor(.orange)
+
+            HStack {
+                
+                Button(action: {
+                    if cardCount > 1 {
+                        cardCount -= 1
+                    }
+                }, label: {
+                    Image(systemName: "rectangle.stack.fill.badge.minus")
+                })
+                
+                Spacer()
+                
+                Button(action: {
+                    if cardCount < emojis.count {
+                        cardCount += 1
+                    }
+                }, label: {
+                    Image(systemName: "rectangle.stack.fill.badge.plus")
+                })
+                
+                
+            }
+            .imageScale(.large)
+            .font(.largeTitle)
         }
-        .foregroundColor(.orange)
         .padding()
     }
 }
@@ -37,6 +65,7 @@ struct CardView: View {
             }
         } .onTapGesture {
             isFaceUp.toggle()
+            print("tapped")
         }
     }
 }
