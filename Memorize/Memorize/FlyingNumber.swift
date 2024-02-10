@@ -2,26 +2,27 @@
 //  FlyingNumber.swift
 //  Memorize
 //
-//  Created by Vakhtang Saginadze on 09.02.2024.
+//  Created by CS193p Instructor on 5/1/23.
+//  Copyright Stanford University 2023
 //
 
 import SwiftUI
 
 struct FlyingNumber: View {
-    typealias Card = MemoryGame<String>.Card
+    let number: Int
+    
     @State private var offset: CGFloat = 0
-    let number:  Int
+    
     var body: some View {
         if number != 0 {
             Text(number, format: .number.sign(strategy: .always()))
                 .font(.largeTitle)
-                .foregroundStyle(number < 0 ? .red : .green)
-                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 1.5, x: 1, y: 1)
-                .fontWeight(.semibold)
-                .opacity(offset != 0 ? 0 : 1)
+                .foregroundColor(number < 0 ? .red : .green)
+                .shadow(color: .black, radius: 1.5, x: 1, y: 1)
                 .offset(x: 0, y: offset)
+                .opacity(offset != 0 ? 0 : 1)
                 .onAppear {
-                    withAnimation(.easeIn(duration: 0.6)) {
+                    withAnimation(.easeIn(duration: 1.5)) {
                         offset = number < 0 ? 200 : -200
                     }
                 }
@@ -32,6 +33,8 @@ struct FlyingNumber: View {
     }
 }
 
-#Preview {
-    FlyingNumber(number: 5)
+struct FlyingNumber_Previews: PreviewProvider {
+    static var previews: some View {
+        FlyingNumber(number: 5)
+    }
 }
