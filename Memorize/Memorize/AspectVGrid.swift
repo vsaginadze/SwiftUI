@@ -2,17 +2,18 @@
 //  AspectVGrid.swift
 //  Memorize
 //
-//  Created by Vakhtang Saginadze on 06.02.2024.
+//  Created by CS193p Instructor on 4/24/23.
+//  Copyright Stanford University 2023
 //
 
 import SwiftUI
 
 struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
-    var items: [Item]
+    let items: [Item]
     var aspectRatio: CGFloat = 1
-    var content: (Item) -> ItemView
+    let content: (Item) -> ItemView
     
-    init(_ items: [Item], aspectRatio: CGFloat, content: @escaping (Item) -> ItemView) {
+    init(_ items: [Item], aspectRatio: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
         self.items = items
         self.aspectRatio = aspectRatio
         self.content = content
@@ -34,7 +35,6 @@ struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
         }
     }
     
-    
     private func gridItemWidthThatFits(
         count: Int,
         size: CGSize,
@@ -52,7 +52,6 @@ struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
             }
             columnCount += 1
         } while columnCount < count
-        
         return min(size.width / count, size.height * aspectRatio).rounded(.down)
     }
 }
