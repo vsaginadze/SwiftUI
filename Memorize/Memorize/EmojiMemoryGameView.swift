@@ -13,6 +13,10 @@ struct EmojiMemoryGameView: View {
     
     private let aspectRatio: CGFloat = 2/3
     private let spacing: CGFloat = 4
+    private let dealInterval: TimeInterval = 0.125
+    private let dealAnimation: Animation = .easeInOut(duration: 0.5)
+    private let deckWidth: CGFloat = 50
+    
     
     var body: some View {
         VStack {
@@ -24,12 +28,32 @@ struct EmojiMemoryGameView: View {
                 
                 Spacer()
                 
+                deck.foregroundStyle(viewModel.color)
+                
+                Spacer()
+                
                 shuffleButton
             }
             .font(.title2)
             .fontWeight(.medium)
         }
         .padding()
+    }
+    
+    private var cards: some View {
+        AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
+            if isDealt(card) {
+                CardView(card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNameSpace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
+                    .padding(spacing)
+                    .overlay(FlyingNumber(number: scoreChange(causedBy: card)))
+                    .zIndex(scoreChange(causedBy: card) != 0 ? 0 : 1)
+                    .onTapGesture {
+                        choose(card)
+                    }
+                }
+        }
     }
     
     private var score: some View {
@@ -46,15 +70,41 @@ struct EmojiMemoryGameView: View {
         .buttonStyle(.borderedProminent)
     }
     
-    private var cards: some View {
-        AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
-            CardView(card)
-                .padding(spacing)
-                .overlay(FlyingNumber(number: scoreChange(causedBy: card)))
-                .zIndex(scoreChange(causedBy: card) != 0 ? 1 : 0)
-                .onTapGesture {
-                    choose(card)
-                }
+    
+    @State private var dealt = Set<Card.ID>()
+    
+    private func isDealt(_ card: Card) -> Bool {
+        dealt.contains(card.id)
+    }
+    
+    private var undealtCards: [Card] {
+        viewModel.cards.filter { !isDealt($0) }
+    }
+    
+    @Namespace private var dealingNameSpace
+    
+    private var deck: some View {
+        ZStack {
+            ForEach(undealtCards) { card in
+                CardView(card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNameSpace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
+            }
+        }
+        .frame(width: deckWidth, height: deckWidth / aspectRatio)
+        .onTapGesture {
+            deal()
+        }
+    }
+    
+    private func deal() {
+        var delay: TimeInterval = 0
+        for card in viewModel.cards {
+            withAnimation(dealAnimation.delay(delay)) {
+                _ = dealt.insert(card.id)
+            }
+            
+            delay += dealInterval
         }
     }
     
